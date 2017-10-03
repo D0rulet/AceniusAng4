@@ -1,0 +1,45 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.menu-wrapper{
+    min-width: 250px;
+    float: left;
+    height: 100vh;
+    background: lightgray;
+    border-right: 2px solid darkgray;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menu-wrapper form{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.menu-wrapper form > div{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type=number]{
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 60px;
+    font-size: 1.3em;
+}
+input[type=text]{
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 120px;
+    font-size: 1.3em;
+}
+

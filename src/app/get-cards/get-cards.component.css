@@ -1,0 +1,14 @@
+input[type=text]{
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 120px;
+    font-size: 1.3em;
+}
+
+.select-board{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}

@@ -1,0 +1,10 @@
+<div class="select-board">
+  <label for="user">Pinterest user</label>
+  <input type="text" name="user" 
+    [(ngModel)]='pinterestUser'
+    (keyup)='sendPinData()'>
+  <label for="board">And his board</label>
+  <input type="text" name="board" 
+    [(ngModel)]='pinterestBoard'
+    (keyup)='sendPinData()'>
+</div>

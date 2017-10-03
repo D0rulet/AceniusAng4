@@ -1,0 +1,4 @@
+<!-- <app-menu (showImagesEvent)='createFinalCardList($event)'> </app-menu> -->
+<app-card  *ngFor='let image of finalCardList' 
+            [imageSource]='image'></app-card>
+            <button (click)='initz()'>Start game</button>
