@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-player-name',
@@ -7,12 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerNameComponent implements OnInit {
   numberOfPlayers;
+  playerName;
   players= [];
+  @Output() playersArr = new EventEmitter<any>();
+  sendPlayerArr() {
+    this.playersArr.emit(this.players);
+  }
   constructor() { }
   generatePlayerArray() {
     this.players = [];
     for ( let i = 0 ; i < this.numberOfPlayers; i++) {
-      this.players.push({name: ('Player ' + (1 + i)), nameVar: ((1 + i) + ' players')});
+      this.players.push({name: ('Player ' + (1 + i)), nameVar: ''});
     }
   }
   ngOnInit() {

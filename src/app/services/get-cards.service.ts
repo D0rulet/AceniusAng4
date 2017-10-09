@@ -7,19 +7,21 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class GetCardsService {
-  imageUrl;
+  cardListUrl;
   constructor(private _http: HttpClient) { }
+  generateApiUrl(pinterestUser, pinterestBoard) {
+    return this.cardListUrl = 'https://www.acenius.com/scripts/getPinterestJson.php?user='
+    + pinterestUser + '&board=' + pinterestBoard;
+  }
   getCards(): Observable<any> {
-    return this._http.get(this.imageUrl)
-    .do(data => console.log(data, this.imageUrl))
+    console.log(this.cardListUrl);
+    return this._http.get(this.cardListUrl)
+    .do(data => console.log(data, this.cardListUrl))
     .catch(this.handleError);
   }
 
   private handleError(err: HttpErrorResponse) {
     console.log(err.message);
     return Observable.throw(err.message);
-  }
-  setUrl(data) {
-    this.imageUrl = data;
   }
 }

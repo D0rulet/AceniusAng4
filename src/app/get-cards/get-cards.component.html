@@ -1,10 +1,13 @@
 <div class="select-board">
   <label for="user">Pinterest user</label>
   <input type="text" name="user" 
-    [(ngModel)]='pinterestUser'
-    (keyup)='sendPinData()'>
+    [(ngModel)]='pinterestUser'>
   <label for="board">And his board</label>
   <input type="text" name="board" 
-    [(ngModel)]='pinterestBoard'
-    (keyup)='sendPinData()'>
+    [(ngModel)]='pinterestBoard'>
+</div>
+<div class="select-cards">
+  <label for="cards">Choose number of card pairs</label><br>
+  <input type="number" name="cards" min="16" max="25"
+  [(ngModel)]='cardsNumber'>
 </div>

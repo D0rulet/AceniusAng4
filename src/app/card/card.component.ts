@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { GameLogicService } from '../services/game-logic.service';
 
 @Component({
   selector: 'app-card',
@@ -7,8 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardComponent implements OnInit {
   @Input() imageSource;
-  constructor() { }
-
+  state = 'unknown';
+  _gameLogic: GameLogicService;
+  constructor(_gameLogic: GameLogicService) { this._gameLogic = _gameLogic; }
+  getState() {
+    this.state = this._gameLogic.state;
+  }
   ngOnInit() {
   }
 

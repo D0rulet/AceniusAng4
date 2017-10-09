@@ -1,9 +1,15 @@
+
+
 <section class="menu-wrapper">
     <form>
         <h3 class="options">Options</h3>
-        <app-get-cards (sendPinterestData)='generateApiUrl($event)'></app-get-cards>  
-        <app-player-name></app-player-name>
-        <app-cards-number></app-cards-number>
-        <button>Start Game</button>
+        <app-player-name  (playersArr)='takePlayerArr($event)'></app-player-name>
+        <app-get-cards></app-get-cards>  
+        <button (click)='start()'>Start Game</button>
     </form>
 </section>
+<app-player *ngFor='let player of playerArr; first as isFirst'
+[playerName]='player.nameVar'></app-player>
+<app-card  *ngFor='let image of finalCardList;index as index' 
+[imageSource]='image'
+(click)='clickCard(image, index)'></app-card>

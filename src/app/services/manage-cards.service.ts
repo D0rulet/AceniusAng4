@@ -1,21 +1,24 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ManageCardsService {
   finalCardList;
-  cardsNumber = 20;
-  constructor() { }
-
-  // double the cards and call reandomize function
+  cardsNumber = 16;
+  constructor() {}
+  setCardsNumber(number) {
+    return this.cardsNumber = number;
+  }
+  // double the cards
   createFinalCardList(cardList) {
-    cardList = cardList.slice(0, this.cardsNumber);
-    console.log('createFinalcardList was triggered');
     this.finalCardList = [];
+    cardList = cardList.slice(0, this.cardsNumber);
+    // console.log(cardList);
     for (const i of cardList){
       this.finalCardList.push(i, i);
     }
     this.fisherYates(this.finalCardList);
-    console.log(this.finalCardList);
+    // console.log('createFinalcardList was triggered', this.finalCardList);
     return this.finalCardList;
   }
 // rand function -> http://sedition.com/perl/javascript-fy.html
@@ -28,9 +31,5 @@ export class ManageCardsService {
       myArray[i] = tempj;
       myArray[j] = tempi;
      }
-  }
-
-  getCardsNumber(cardsNumber) {
-    this.cardsNumber = cardsNumber;
   }
 }

@@ -4,5 +4,5 @@
 </div>
 <div class="p1" *ngFor='let player of players'>
   <label for="player">{{player.name}}</label>             
-  <input type="text" name="player">
+  <input type="text" name="player" [(ngModel)]='player.nameVar' (change)='sendPlayerArr()'>
 </div>

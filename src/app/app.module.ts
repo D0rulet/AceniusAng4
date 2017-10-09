@@ -4,31 +4,30 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
-import { CardListComponent } from './card-list/card-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
-import { GetCardsService } from './get-cards-service/get-cards.service';
+import { GetCardsService } from './services/get-cards.service';
 import { PlayerNameComponent } from './player-name/player-name.component';
 import { GetCardsComponent } from './get-cards/get-cards.component';
-import { CardsNumberComponent } from './cards-number/cards-number.component';
-import { ManageCardsService } from './manage-cards.service';
+import { ManageCardsService } from './services/manage-cards.service';
+import { PlayerComponent } from './player/player.component';
+import { GameLogicService } from './services/game-logic.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    CardListComponent,
     MenuComponent,
     PlayerNameComponent,
     GetCardsComponent,
-    CardsNumberComponent
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [GetCardsService, ManageCardsService],
+  providers: [GetCardsService, ManageCardsService, GameLogicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
