@@ -1,9 +1,10 @@
 <div class="board-wrapper">
+  <!-- class.turn -> the class 'turn' gets added to the player for wich person.playerStats.turnStart evaluates as true -->
   <div class="board" *ngFor='let person of _playersService.players' [class.turn]='person.playerStats.turnStart'>
     <div class="player">
-        <h3 class="name">{{person.playerStats.victor ? 'WINNER ' : ''}}{{person.playerStats.name | uppercase}}</h3>
-        <span class="score">Points</span>
-        <h2 class="score">{{person.playerStats.score}}</h2>
+      <!-- used a conditional for declaring the winner and a standard angular pipe filter for uppercasing the players names -->
+        <h2 class="name">{{person.playerStats.victor ? 'WINNER ' : ''}}{{person.playerStats.name | uppercase}}</h2>
+        <h1 class="score">{{person.playerStats.score}}</h1>
     </div>
   </div>
 </div>
