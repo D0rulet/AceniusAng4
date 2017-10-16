@@ -1,4 +1,8 @@
-<div class={{state}} (click)='getState()'>
-    <img src={{imageSource}} title="">
+<div *ngFor='let image of _getCardsService.cardsObject'>
+    <img title=""  
+    [attr.src]='image.url' 
+    (click)='clickCard(image)' 
+    [class]='image.class' 
+    [draggable]='false'
+    >
 </div>
-

@@ -10,8 +10,10 @@ import { GetCardsService } from './services/get-cards.service';
 import { PlayerNameComponent } from './player-name/player-name.component';
 import { GetCardsComponent } from './get-cards/get-cards.component';
 import { ManageCardsService } from './services/manage-cards.service';
-import { PlayerComponent } from './player/player.component';
 import { GameLogicService } from './services/game-logic.service';
+import { PlayersService } from './services/players.service';
+import { ScoreBoardComponent } from './score-board/score-board.component';
+import { GameStateService } from './services/game-state.service';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,15 @@ import { GameLogicService } from './services/game-logic.service';
     MenuComponent,
     PlayerNameComponent,
     GetCardsComponent,
-    PlayerComponent
+    ScoreBoardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [GetCardsService, ManageCardsService, GameLogicService],
+  // make all services available to all components
+  providers: [GetCardsService, ManageCardsService, GameLogicService, PlayersService, GameStateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

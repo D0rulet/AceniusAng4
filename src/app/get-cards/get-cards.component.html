@@ -1,13 +1,16 @@
 <div class="select-board">
   <label for="user">Pinterest user</label>
   <input type="text" name="user" 
-    [(ngModel)]='pinterestUser'>
+    [(ngModel)]='pinterestUser'
+    [disabled]='_gameStateService.disabled'>
   <label for="board">And his board</label>
   <input type="text" name="board" 
-    [(ngModel)]='pinterestBoard'>
+    [(ngModel)]='pinterestBoard'
+    [disabled]='_gameStateService.disabled'>
 </div>
 <div class="select-cards">
   <label for="cards">Choose number of card pairs</label><br>
   <input type="number" name="cards" min="16" max="25"
-  [(ngModel)]='cardsNumber'>
+  [(ngModel)]='cardsNumber'
+  [disabled]='_gameStateService.disabled'>
 </div>

@@ -1,0 +1,10 @@
+<div class="board-wrapper">
+  <div class="board" *ngFor='let person of _playersService.players' [class.turn]='person.playerStats.turnStart'>
+    <div class="player">
+        <h3 class="name">{{person.playerStats.victor ? 'WINNER ' : ''}}{{person.playerStats.name | uppercase}}</h3>
+        <span class="score">Points</span>
+        <h2 class="score">{{person.playerStats.score}}</h2>
+    </div>
+  </div>
+</div>
+

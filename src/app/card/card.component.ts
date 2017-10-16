@@ -1,20 +1,30 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameLogicService } from '../services/game-logic.service';
+import { GetCardsService } from '../services/get-cards.service';
+import { ManageCardsService } from '../services/manage-cards.service';
 
+
+// This component interacts with
+// GameLogicService
+//  -> sends info about the clicked card
+//  <- receives info about class [therefore cards flip / are guessed / are blank -> in-focus, known, unknown]
+// ManageCardsService
+//  <- receives processed image links in an object format so the *ngFor can build all the cards.
+//  the object contains the link and the class [default -> 'unknown']
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent implements OnInit {
-  @Input() imageSource;
-  state = 'unknown';
+export class CardComponent {
+  class = 'unknown';
   _gameLogic: GameLogicService;
-  constructor(_gameLogic: GameLogicService) { this._gameLogic = _gameLogic; }
-  getState() {
-    this.state = this._gameLogic.state;
+  _getCardsService: ManageCardsService;
+  constructor(_gameLogic: GameLogicService, _getCardsService: ManageCardsService) {
+    this._gameLogic = _gameLogic;
+    this._getCardsService = _getCardsService;
   }
-  ngOnInit() {
+  clickCard(image) {
+    this._gameLogic.clickCard(image);
   }
-
 }

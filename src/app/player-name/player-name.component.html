@@ -1,8 +1,21 @@
+<!-- 
+  change - on change event, call method generatePlayers in PlayersService with the value of the input as param 
+  ngModel- two way data binding on the number of players
+  [which is sent as param for the generatePlayers method - weird but that's how angular works - cant bind the value directly]
+  disabled - is enabled or disabled depending on game state set by the menu component when Start Button is clicked - enabled when not playing[default]
+-->
+
 <div class="select-players">
   <label for="players">Choose number of players</label><br>
-  <input  (change)='generatePlayerArray()' type="number" name="players" id="players" min="2" max="4" value="2" [(ngModel)]='numberOfPlayers'>
+  <input type="number" name="players" min="2" max="4" value="2" 
+  (change)='_playersService.generatePlayers(_playersService.numPlayers)' 
+  [(ngModel)]='_playersService.numPlayers' 
+  [disabled]='_gameStateService.disabled'>
 </div>
-<div class="p1" *ngFor='let player of players'>
-  <label for="player">{{player.name}}</label>             
-  <input type="text" name="player" [(ngModel)]='player.nameVar' (change)='sendPlayerArr()'>
+<div class="p1" *ngFor='let players of _playersService.players; index as i'>
+  <label for="player">{{players.label}}</label>   
+  <!-- some awesome programming - 2 way data binding inside a forOfLoop -->
+  <input type="text" name="player" maxlength="20"
+  [(ngModel)]='_playersService.players[i].playerStats.name' 
+  [disabled]='_gameStateService.disabled'>
 </div>

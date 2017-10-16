@@ -1,25 +1,30 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
+// this service deals with more array manipulation than actual logic for the app
+// here the array from the observable gets passed in and doubled then shuffled
+// here the number of cards array is sliced to match the input cards number
+// we send to card component an array of objects for the loop - object contain the image link and the class for that image
+// in card component the loop generates the images with the links and the class='unknown'
 @Injectable()
 export class ManageCardsService {
-  finalCardList;
+  finalCardList: any[];
+  cardsObject;
   cardsNumber = 16;
   constructor() {}
   setCardsNumber(number) {
-    return this.cardsNumber = number;
+    this.cardsNumber = number;
   }
-  // double the cards
+  // slice to desired array length, double the cards, shuffle them, push objects in finalCardList, assign to object
+  // the cardsObject is what we ultimately use in card component
   createFinalCardList(cardList) {
     this.finalCardList = [];
     cardList = cardList.slice(0, this.cardsNumber);
-    // console.log(cardList);
     for (const i of cardList){
       this.finalCardList.push(i, i);
     }
     this.fisherYates(this.finalCardList);
-    // console.log('createFinalcardList was triggered', this.finalCardList);
-    return this.finalCardList;
+    this.cardsObject = this.finalCardList.map( item => ({'url': item , 'class': 'unknown'}) );
+    return this.cardsObject;
   }
 // rand function -> http://sedition.com/perl/javascript-fy.html
   fisherYates ( myArray ) {

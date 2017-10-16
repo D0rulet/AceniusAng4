@@ -1,15 +1,14 @@
-
-
+<!-- here we load all the other component directives -->
 <section class="menu-wrapper">
     <form>
         <h3 class="options">Options</h3>
-        <app-player-name  (playersArr)='takePlayerArr($event)'></app-player-name>
+        <app-player-name></app-player-name>
         <app-get-cards></app-get-cards>  
-        <button (click)='start()'>Start Game</button>
+        <!-- show or hide buttons depending on the state of the game -->
+        <button (click)='start()' *ngIf='!_gameStateService.disabled'>Start Game</button>
+        <button *ngIf='_gameStateService.disabled' (click)='restart()'>Restart</button>
     </form>
 </section>
-<app-player *ngFor='let player of playerArr; first as isFirst'
-[playerName]='player.nameVar'></app-player>
-<app-card  *ngFor='let image of finalCardList;index as index' 
-[imageSource]='image'
-(click)='clickCard(image, index)'></app-card>
+<!-- score-board shows only when gamestate is on playing [menu disabled] -->
+<app-score-board *ngIf='_gameStateService.disabled'></app-score-board>
+<app-card></app-card>
